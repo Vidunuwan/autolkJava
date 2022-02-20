@@ -164,6 +164,11 @@ public class Admin_Panal extends javax.swing.JFrame {
         Reset.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Reset.setForeground(new java.awt.Color(255, 51, 102));
         Reset.setText("Reset");
+        Reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResetActionPerformed(evt);
+            }
+        });
 
         Insert.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Insert.setForeground(new java.awt.Color(102, 204, 0));
@@ -339,8 +344,8 @@ public class Admin_Panal extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/team012","root","");
             Statement stm = con.createStatement();
             
-            String sql = "INSERT INTO items VALUES("+itemId+",'"+name+",'"+mainCat+","+subCat+",'"+price+",'"+inStoke+",'"+waranty+",'"+shortDis+",'"+brand+"')";
-            
+            String sql = "INSERT INTO items VALUES('"+itemId+"','"+name+"','"+mainCat+"','"+subCat+"',"+price+","+inStoke+",'"+waranty+"','"+shortDis+"',0,'"+brand+"')";
+            System.out.println(sql);
             stm.executeUpdate(sql);
             
             JOptionPane.showMessageDialog(this, "Item Record Inserted");
@@ -357,6 +362,19 @@ public class Admin_Panal extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_InsertActionPerformed
+
+    private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
+        // TODO add your handling code here:
+        ItemID.setText("");
+        Name.setText("");
+        MainCategory.setText("");
+        SubCategory.setText("");
+        Price.setText("");
+        InStoke.setText("");
+        WarantyTime.setText("");
+        SortDis.setText("");
+        Brand.setText("");
+    }//GEN-LAST:event_ResetActionPerformed
 
     /**
      * @param args the command line arguments
